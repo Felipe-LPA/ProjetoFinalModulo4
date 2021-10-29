@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Viva Real</title>
+    <!-- reset -->
+    <link rel="stylesheet" href="./src/assets/css/reset.css" />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <!-- css Global -->
+    <link rel="stylesheet" href="./src/assets/css/style.css" />
+  </head>
+  <body>
+    <header class="container-fluid wrapper-container mb-5">
+      <div
+        class="container-lg d-flex justify-content-between wrapper-container"
+      >
+        <div class="d-flex">
+          <div class="logo">
+            <a href="#" class="d-flex align-items-center">
+              <img
+                class="img-fluid"
+                src="./src/assets/img/logo2.png"
+                alt="Logo Viva Real"
+              />
+            </a>
+          </div>
+          <nav>
+            <ul class="d-flex align-items-center h-100">
+              <li><a href="#">COMPRAR</a></li>
+              <li><a href="#">ALUGAR</a></li>
+              <li><a href="#">IMÓVEIS NOVOS</a></li>
+              <li><a href="#">SELEÇÃO VIVA REAL</a></li>
+              <li><a href="#">DESCOBRIR</a></li>
+              <li><a href="#">FINANCIAMENTO</a></li>
+            </ul>
+          </nav>
+        </div>
+        <div id="login">
+          <ul class="d-flex align-items-center h-100">
+            <li><a href="#">ANUNCIAR IMÓVEIS</a></li>
+            <li><a href="#">ENTRAR</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <main class="container-lg wrapper-container gap-3">
+      <section class="main-content">
+        <nav class="">
+          <ul class="">
+            <li class="active"><a href="#">COMPRAR</a></li>
+            <li><a href="#">ALUGAR</a></li>
+            <li><a href="#">IMÓVEIS NOVOS</a></li>
+            <li><a href="#">SELEÇÃO VIVA REAL</a></li>
+          </ul>
+        </nav>
+        <div id="search-result" class="d-flex, flex-column gap-3 pt-4"></div>
+      </section>
+      <aside class="searchSidebar d-flex flex-column gap-4">
+        <article class="d-flex flex-column p-3">
+          <div>
+            <label class="form-label" for="search">LOCALIZAÇÃO DO IMÓVEL</label>
+            <input
+              class="searchInput form-control"
+              placeholder="Digite uma rua, bairro ou cidade"
+              id="search"
+            />
+            <div class="cityAndState"></div>
+          </div>
+          <div>
+            <label class="form-label">IMÓVEL COM</label>
+            <div id="optionTourCheckbox" class="form-check form-switch">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                role="switch"
+                id="flexSwitchCheckChecked"
+                checked
+              />
+              <label class="form-check-label" for="flexSwitchCheckChecked"
+                >Tour Virtual ou Vídeos</label
+              >
+            </div>
+          </div>
+          <div>
+            <label class="form-label">TIPO DE IMÓVEL</label>
+            <select id="propertyType" class="form-select">
+              <option value="Mostrar todos">Mostrar todos</option>
+            </select>
+          </div>
+          <div class="flex-row minAndMaxValue">
+            <div>
+              <label class="form-label" for="min-price">PREÇO MÍNIMO</label>
+              <input class="form-control" type="text" placeholder="R$ " id="min-price"/>
+            </div>
+            <div>
+              <label class="form-label" for="max-price">PREÇO MÍNIMO</label>
+              <input
+                class="form-control"
+                type="text"
+                placeholder="R$ ilimitado"
+                id="max-price"
+              />
+            </div>
+          </div>
+          <div>
+            <label class="form-label" for="">NÚMERO DE QUARTOS</label>
+            <div class="searchRadioOptions d-flex justify-content-between">
+              <input
+                type="radio"
+                class="btn-check"
+                name="optionsBedroom"
+                id="option1Bedroom"
+                autocomplete="off"
+                checked
+              />
+              <label class="btn btn-secondary" for="option1Bedroom">1+</label>
+              <input
+                type="radio"
+                class="btn-check"
+                name="optionsBedroom"
+                id="option2Bedroom"
+                autocomplete="off"
+              />
+              <label class="btn btn-secondary" for="option2Bedroom">2+</label>
+              <input
+                type="radio"
+                class="btn-check"
+                name="optionsBedroom"
+                id="option3Bedroom"
+                autocomplete="off"
+              />
+              <label class="btn btn-secondary" for="option3Bedroom">3+</label>
+              <input
+                type="radio"
+                class="btn-check"
+                name="optionsBedroom"
+                id="option4Bedroom"
+                autocomplete="off"
+              />
+              <label class="btn btn-secondary" for="option4Bedroom">4+</label>
+              <input
+                type="radio"
+                class="btn-check"
+                name="optionsBedroom"
+                id="option5Bedroom"
+                autocomplete="off"
+              />
+              <label class="btn btn-secondary" for="option5Bedroom">5+</label>
+            </div>
+          </div>
+        </article>
+        <article class="d-flex flex-column p-3">
+          <div class="flex-row minAndMaxValue">
+            <div>
+              <label class="form-label" for="min-area">ÁREA MÍNIMA</label>
+              <input class="form-control" type="text" placeholder="m² " id="min-area"/>
+            </div>
+            <div>
+              <label class="form-label" for="max-area">ÁREA MÁXIMA</label>
+              <input
+                class="form-control"
+                type="text"
+                placeholder="ilimitado m²"
+                id="max-area"
+              />
+            </div>
+          </div>
+          <div>
+            <label class="form-label" for="">NÚMERO DE VAGAS NA GARAGEM</label>
+            <div class="searchRadioOptions d-flex justify-content-between">
+              <input
+                type="radio"
+                class="btn-check"
+                name="optionsParkingSpace"
+                id="option1ParkingSpace"
+                autocomplete="off"
+                checked
+              />
+              <label class="btn btn-secondary" for="option1ParkingSpace"
+                >1+</label
+              >
+              <input
+                type="radio"
+                class="btn-check"
+                name="optionsParkingSpace"
+                id="option2ParkingSpace"
+                autocomplete="off"
+              />
+              <label class="btn btn-secondary" for="option2ParkingSpace"
+                >2+</label
+              >
+              <input
+                type="radio"
+                class="btn-check"
+                name="optionsParkingSpace"
+                id="option3ParkingSpace"
+                autocomplete="off"
+              />
+              <label class="btn btn-secondary" for="option3ParkingSpace"
+                >3+</label
+              >
+              <input
+                type="radio"
+                class="btn-check"
+                name="optionsParkingSpace"
+                id="option4ParkingSpace"
+                autocomplete="off"
+              />
+              <label class="btn btn-secondary" for="option4ParkingSpace"
+                >4+</label
+              >
+              <input
+                type="radio"
+                class="btn-check"
+                name="optionsParkingSpace"
+                id="option5ParkingSpace"
+                autocomplete="off"
+              />
+              <label class="btn btn-secondary" for="option5ParkingSpace"
+                >5+</label
+              >
+            </div>
+          </div>
+          <div>
+            <label class="form-label" class="form-label" for=""
+              >NÚMERO DE BANHEIROS</label
+            >
+            <div class="searchRadioOptions d-flex justify-content-between">
+              <input
+                type="radio"
+                class="btn-check"
+                name="optionsbathroom"
+                id="option1bathroom"
+                autocomplete="off"
+                checked
+              />
+              <label class="btn btn-secondary" for="option1bathroom">1+</label>
+              <input
+                type="radio"
+                class="btn-check"
+                name="optionsbathroom"
+                id="option2bathroom"
+                autocomplete="off"
+              />
+              <label class="btn btn-secondary" for="option2bathroom">2+</label>
+              <input
+                type="radio"
+                class="btn-check"
+                name="optionsbathroom"
+                id="option3bathroom"
+                autocomplete="off"
+              />
+              <label class="btn btn-secondary" for="option3bathroom">3+</label>
+              <input
+                type="radio"
+                class="btn-check"
+                name="optionsbathroom"
+                id="option4bathroom"
+                autocomplete="off"
+              />
+              <label class="btn btn-secondary" for="option4bathroom">4+</label>
+              <input
+                type="radio"
+                class="btn-check"
+                name="optionsbathroom"
+                id="option5bathroom"
+                autocomplete="off"
+              />
+              <label class="btn btn-secondary" for="option5bathroom">5+</label>
+            </div>
+          </div>
+        </article>
+      </aside>
+    </main>
+
+    <!-- Bootstrap js -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- script de entrada -->
+    <script src="./src/js/index.js" type="module"></script>
+  </body>
+</html>

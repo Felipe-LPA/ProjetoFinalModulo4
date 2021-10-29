@@ -1,0 +1,188 @@
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+}
+.wrapper-container {
+  min-width: 769px;
+}
+/* Header */
+header {
+  background-color: #1a90cd;
+}
+header a {
+  color: #fff;
+  text-decoration: none;
+}
+header a:hover {
+  color: #fff;
+}
+/* logo */
+.logo {
+  width: 15%;
+}
+.logo a {
+  width: 100%;
+  height: 100%;
+}
+/* nav */
+header ul li {
+  font-size: 0.6rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 0.6rem;
+}
+header ul li:hover {
+  background-color: #249ad1;
+  cursor: pointer;
+  transition: all 225ms ease-in-out;
+}
+
+/* Main */
+main {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+/* Main content */
+.main-content {
+  grid-area: 1/ 2/ 2/ 3;
+}
+.main-content nav {
+  font-size: 0.6rem;
+  font-weight: 700;
+  border-bottom: 1px solid #ccc;
+}
+.main-content nav a {
+  text-decoration: none;
+  color: #249ad1;
+}
+.main-content nav ul {                                           
+  display: flex;
+  height: 100%;
+  margin-bottom: 0;
+  padding: 0;
+  border-collapse: collapse;
+}
+
+.main-content nav li{
+    padding: 0.5rem 1rem;
+}
+.main-content nav li.active{
+  border-bottom: 3px solid #249ad1;
+}
+/* searchResult */
+/* #search-result article{
+
+    
+} */
+/* Error */
+.statusErrorMsg{
+    color: #ff0000;
+    text-align: center;
+    margin: 2rem 0;
+}
+.errorMsgFormat:not(.statusErrorMsg){
+    text-align: center;
+    font-weight: 700;
+}
+.errorMsgFormat:nth-child(1){
+    margin-top: 2rem;
+}
+
+/* list properties */
+/* .first-article-list{
+    display:flex;
+    flex-direction:column;
+
+} */
+.title-list-properties{
+    font-size:1rem;
+}
+.resetButtonTitlelist{
+    font-size: .7rem;
+    border:1px solid #249ad1;
+    display:inline-block;
+    border-radius:20px;
+    padding:.3rem;
+    color:#249ad1;
+    cursor: pointer;
+}
+.resetButtonTitlelist:hover{
+    background-color:#ecf6fc
+}
+.resetButtonTitlelist span::after{
+    content:"X";
+    font-size: .5rem;
+    padding: 0.5rem;
+    vertical-align:text-top;
+    font-weight: bold;
+}
+
+/* aside */
+aside {
+  grid-area: 1/ 1/ 2/ 2;
+  font-size: 0.6rem;
+}
+aside article:nth-child(1) {
+  background-color: #fddb87;
+}
+aside article:nth-child(2) {
+  border: 1px solid #ccc;
+}
+aside article,
+aside article input {
+  border-radius: 5px;
+}
+aside article > div {
+  display: flex;
+  flex-direction: column;
+}
+aside article > div:not(.minAndMaxValue) {
+  margin-bottom: 1rem;
+}
+aside article > div:last-child {
+  margin-bottom: 0;
+}
+aside article input::placeholder,
+aside article select#propertyType {
+  font-size: 0.7rem;
+  color: #777;
+}
+aside article:nth-child(2) input::placeholder {
+  text-align: end;
+}
+aside article input#flexSwitchCheckChecked {
+  height: 100%;
+  width: 25%;
+}
+aside article #optionTourCheckbox {
+  display: flex;
+  align-items: center;
+  height: 3vh;
+  gap: 0.5rem;
+  /* width: 30%; */
+}
+.minAndMaxValue {
+  gap: 1rem;
+}
+.minAndMaxValue div {
+  z-index: 3;
+}
+.minAndMaxValue div:nth-child(1)::after {
+  content: "_______";
+  /* border-bottom: 1px solid #000; */
+  /* transform: translateY(100px); */
+  position: relative;
+  top: -38%;
+  left: 100%;
+  z-index: 1;
+  color: #ccc;
+  /* overflow:hidden; */
+}
+.searchRadioOptions label {
+  background-color: #fff;
+  color: #777;
+  border-radius: 45%;
+  font-size: 0.7rem;
+  width: 18%;
+}
