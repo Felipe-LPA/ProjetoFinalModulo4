@@ -1,3 +1,5 @@
+import { translateAmenities } from "./auxFunction.js";
+import { dicionaryAmenities } from "./dicionaries-data.js";
 const doResultReset = (element) => {
   element.innerHTML = "";
 }
@@ -30,6 +32,12 @@ export const setError = () => {
   searchResultEl.append(articleEl);
 };
 
+export const buildResetButtonAside = ({city, state}) =>{
+  const resetDivButtonAside = document.querySelector('.reset-city-state')
+  const resetButtonEl = createResetButton(city, state)
+  resetButtonEl.classList.add('reset-button')
+  resetDivButtonAside.append(resetButtonEl)
+}
 
 export const buildlistProperties = (arrformatedObjProperties, amountProperties, cityAndState) =>{
     const searchResultEl = document.querySelector("#search-result"); 
@@ -44,22 +52,22 @@ export const buildlistProperties = (arrformatedObjProperties, amountProperties, 
     console.log(arrformatedObjProperties, amountProperties)
 
 }
-const setTitleListProperties = (amountProperties, cityAndState) => {
+const setTitleListProperties = (amountProperties, {city, state}) => {
     const articleEl = document.createElement('article')
     const h1El = document.createElement('h1')
     const amountEL = createElementWithText('span', `${amountProperties}`)
     amountEL.classList.add('fw-bold')
-    h1El.append(amountEL,` imóveis à venda em ${cityAndState}`)
+    h1El.append(amountEL,` imóveis à venda em ${city} - ${state}`)
     h1El.classList.add('title-list-properties')
     // console.log(h1El)
-    const resetButton = createResetButton(cityAndState)
-    resetButton.classList.add('resetButtonTitlelist')
+    const resetButton = createResetButton(city, state)
+    resetButton.classList.add('reset-Button-Title-list', 'reset-button')
     articleEl.append(h1El, resetButton)
     articleEl.classList.add('first-article-list')
     return articleEl
 }
-const createResetButton = (cityAndState) => {
-    const spanEl = createElementWithText('span',cityAndState )
+const createResetButton = (city, state) => {
+    const spanEl = createElementWithText('span',`${city} - ${state}` )
     const divEl = document.createElement('div')
     divEl.append(spanEl)
     return divEl
@@ -77,9 +85,9 @@ const setListProperties = (arrformatedObjProperties) => {
     const imgEl = createImgBox(formatedObjProperty.imgUrl)
     // div que recebe as parte de informações da propriedade
     const infoEl = setInfoProperty(formatedObjProperty)
-    articleEl.append(imgEl, infoEl)
-    aEl.append(articleEl)
-    return aEl
+    aEl.append(imgEl, infoEl)
+    articleEl.append(aEl)
+    return articleEl
   })
   
   
@@ -100,17 +108,20 @@ const setInfoProperty= ({address, name, area, amenities, pricingInfos}) => {
   const areaEl = createElementWithText('p', area)
   const amenitiesEl = setAmenities(amenities)
   const pricingInfosEl = setPriceInfosEl(pricingInfos)
+  const contactButtonsEl = setContactButtons()
   divEl.classList.add('property-info')
-  divEl.append(addressEl, nameEl, areaEl, amenitiesEl, pricingInfosEl)
+  divEl.append(addressEl, nameEl, areaEl, amenitiesEl, pricingInfosEl, contactButtonsEl)
   return divEl
 }
 
 const setAmenities = (amenities) => {
   const divEl = document.createElement('div')
   amenities.forEach(amenity => {
-    const divAmenityEl = document.createElement('div')
+    const translatedAmenity = translateAmenities(amenity, dicionaryAmenities)
+    const divAmenityEl = createElementWithText('div', translatedAmenity)
+    // console.log(divAmenityEl, translatedAmenity)
     divAmenityEl.classList.add('amenities')
-    divAmenityEl.innerText = amenity
+    // divAmenityEl.innerText = amenity
     divEl.append(divAmenityEl)
   })
   divEl.classList.add('amenities-box')
@@ -122,8 +133,6 @@ const setPriceInfosEl = ({price, monthlyCondoFee}) => {
   divEl.classList.add('price-infos')
     const priceFormated = new Intl.NumberFormat('pt-BR').format(price)
     const priceEl = createElementWithText('p', `R$ ${priceFormated}`)
-    // priceEl.classList.add('price')
-    // console.log(priceEl)
   if(monthlyCondoFee){
     // caso exista condominio formata o mesmo e cria o span com o valor que
     // separado para aplicar o estilo 
@@ -131,10 +140,42 @@ const setPriceInfosEl = ({price, monthlyCondoFee}) => {
     const spanEl = createElementWithText('span', `R$ ${monthlyCondoFeeFormated}`)
     const monthlyCondoFeeEl = document.createElement('p')
     monthlyCondoFeeEl.append('Condomínio: ', spanEl) 
-    // monthlyCondoFeeEl.classList.add('monthlyCondoFee')
     divEl.append(priceEl, monthlyCondoFeeEl)
     return divEl
   }
   divEl.append(priceEl)
   return divEl
+}
+
+const setContactButtons = () => {
+  const teletoneEl = createContactButtons('TELEFONE')
+  const msgEl = createContactButtons('ENVIAR MENSSAGEM')
+  const divEl = document.createElement('div')
+  divEl.classList.add('contact-box')
+  divEl.append(teletoneEl, msgEl)
+  return divEl
+}
+const createContactButtons = (text, ) => {
+  const buttonEl = createElementWithText('button', text)
+  buttonEl.classList.add('contact-btn')
+  return buttonEl
+}
+
+export const buildPathResult = ({city, state}) => {
+  const pathCityStateEl = document.querySelector('.path-city-state')
+  const ulEl = document.createElement('ul')
+  const homeEl = liElements('Viva Real')
+  const propertyTypeEl = liElements('Venda')
+  const stateEl = liElements(`${state}`)
+  const cityEl = liElements(`imóveis à venda em ${city}`)
+  ulEl.append(homeEl, propertyTypeEl, stateEl, cityEl)
+  pathCityStateEl.append(ulEl)
+}
+const liElements = (text) => {
+  const aEl = document.createElement('a')
+  aEl.setAttribute('href', '#')
+  aEl.append(text)
+  const liEl = document.createElement('li')
+  liEl.append(aEl)
+  return liEl
 }

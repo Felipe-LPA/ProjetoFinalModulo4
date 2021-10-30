@@ -51,5 +51,11 @@ export const getCityAndStateName = (data) => {
     // console.log(data)
     const {listing: {address: {city, stateAcronym:state}}} = data
     // console.log(city, ' - ', state)
-    return `${city} - ${state}`
+    return {city, state}
+}
+
+export const translateAmenities = (amenity, dicionaryAmenities) => {
+    return dicionaryAmenities
+        .filter( item =>  amenity === item.word)
+        .reduce((ac, item) => item.translated, '')
 }

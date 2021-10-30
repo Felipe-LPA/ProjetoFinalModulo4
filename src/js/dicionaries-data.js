@@ -21,7 +21,7 @@ export const dicionaryAmenities = [
     },
     {
       word: 'AIR_CONDITIONING',
-      translated: 'ar Condicionado'
+      translated: 'Ar Condicionado'
     },
     {
       word: 'ELEVATOR',
@@ -45,7 +45,7 @@ export const dicionaryAmenities = [
     },
     {
       word: 'PETS_ALLOWED',
-      translated: 'Animais permitidos'
+      translated: 'Animais Permitidos'
     },
     {
       word: 'AMERICAN_KITCHEN',
@@ -62,6 +62,26 @@ export const dicionaryAmenities = [
     {
       word: 'GYM',
       translated: 'Academia'
+    },
+    {
+      word: 'ELECTRONIC_GATE',
+      translated: 'Portão Eletrônico'
+    },
+    {
+      word: 'GATED_COMMUNITY',
+      translated: 'Condomínio Fechado'
+    },
+    {
+      word: 'CINEMA',
+      translated: 'Cinema'
+    },
+    {
+      word: 'SAUNA',
+      translated: 'Sauna'
+    },
+    {
+      word: 'GARDEN',
+      translated: 'Jardim'
     }
   ]
 
