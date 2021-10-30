@@ -42,6 +42,7 @@ header ul li:hover {
 main {
   display: grid;
   grid-template-columns: 1fr 3fr;
+  margin-bottom: 5vh;
 }
 /* Main content */
 .main-content {
@@ -71,10 +72,8 @@ main {
   border-bottom: 3px solid #249ad1;
 }
 /* searchResult */
-/* #search-result article{
 
-    
-} */
+
 /* Error */
 .statusErrorMsg{
     color: #ff0000;
@@ -90,11 +89,8 @@ main {
 }
 
 /* list properties */
-/* .first-article-list{
-    display:flex;
-    flex-direction:column;
 
-} */
+
 .title-list-properties{
     font-size:1rem;
 }
@@ -117,6 +113,70 @@ main {
     vertical-align:text-top;
     font-weight: bold;
 }
+#search-result a{
+  text-decoration:none;
+}
+#search-result .property-box{
+  border: 1px solid #eee;
+  transition: all 0.5s ease-in-out;
+  display: flex;
+}
+#search-result .property-box:hover{
+  box-shadow: 2px 2px 5px 2px rgba(0,0,0,.2);
+  
+}
+/* Property Box */
+#search-result .img-box {
+width:30vw;
+height:20vw;
+}
+#search-result .img-box img{
+  width:100%;
+  height:100%;
+  }
+#search-result .property-info{
+  font-size: .6rem;
+  padding:.8rem;
+  color: #212121;
+  display: flex;
+  flex-direction: column;
+  position:relative
+}
+#search-result .property-info p{
+margin-bottom: 0;
+}
+#search-result .property-info > p:nth-child(1){
+  color: #a5a5a5;
+}
+#search-result .property-info > p:nth-child(2){
+  font-size: 1rem;
+}
+#search-result .property-info > p:nth-child(3){
+  margin: .5rem 0;
+}
+#search-result .property-info .amenities-box{
+  display: flex;
+  gap: 2%;
+  flex-wrap: wrap;
+}
+#search-result .property-info .amenities{
+  background-color: #ebebeb;
+  border-radius: 20px;
+  padding:.1rem .3rem;
+  color: #b4b4b4;
+}
+#search-result .property-info .price-infos{
+  position:absolute;
+  bottom:.8rem;
+}
+#search-result .property-info .price-infos p:nth-child(1){
+  font-size: 1rem;
+  font-weight: bold;
+}
+#search-result .property-info .price-infos p:nth-child(2) span{
+  font-weight: bold;
+}
+
 
 /* aside */
 aside {
@@ -160,7 +220,6 @@ aside article #optionTourCheckbox {
   align-items: center;
   height: 3vh;
   gap: 0.5rem;
-  /* width: 30%; */
 }
 .minAndMaxValue {
   gap: 1rem;
@@ -170,14 +229,11 @@ aside article #optionTourCheckbox {
 }
 .minAndMaxValue div:nth-child(1)::after {
   content: "_______";
-  /* border-bottom: 1px solid #000; */
-  /* transform: translateY(100px); */
   position: relative;
   top: -38%;
   left: 100%;
   z-index: 1;
   color: #ccc;
-  /* overflow:hidden; */
 }
 .searchRadioOptions label {
   background-color: #fff;

@@ -1,22 +1,12 @@
 import { getPropertiesData } from "./api-request.js";
 import { setError, buildlistProperties } from "./html-handler.js";
 import { formatText, formatArrProperties, getCityAndStateName } from "./auxFunction.js";
-const dicionaryStateCity = [
-  {
-    city: "sao-paulo",
-    state: "sp",
-  },
-  {
-    city: "rio-de-janeiro",
-    state: "rj",
-  },
-];
+import { dicionaryStateCity } from "./dicionaries-data.js";
+
 const testando = "Rio de Janeiro";
 const testando1 = "Sao Paulo ";
 console.log();
-// console.log()
 
-// console.log(dicionaryStateCity);
 
 const teste = async (city) => {
   const formatedCity = formatText(city);
@@ -37,7 +27,6 @@ const teste = async (city) => {
     propertiesData.result.listings
   );
   const amountProperties = propertiesData.totalCount;
-//   console.log(amountProperties);
 const cityAndState = getCityAndStateName(propertiesData.result.listings[0])
   buildlistProperties(arrformatedObjProperties, amountProperties, cityAndState)
 };
