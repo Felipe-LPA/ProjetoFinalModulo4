@@ -280,6 +280,7 @@ aside#search-side-bar input:focus + label,
 aside#search-side-bar input:checked + label{
   background-color: #1190cd;
   border: none;
+  border: 1px solid #1190cd;
 }
 aside article:nth-child(1) {
   background-color: #fddb87;
@@ -366,12 +367,13 @@ aside .min-and-max-value div:nth-child(1)::after {
   font-size: 0.9rem;
   width: 18%;
 }
-.search-radio-options label:hover {
+aside article:nth-child(1) .search-radio-options input[type="radio"] + label:hover {
   background-color: #ddd;
   color: #777;
+  border-color:#ddd;
 }
 aside article:nth-child(1) .search-radio-options input[type="radio"] + label {
-  border: #fff;
+  border: 1px solid #fff;
 }
 aside article:nth-child(2) .search-radio-options input[type="radio"] + label {
   border-color: #777;
