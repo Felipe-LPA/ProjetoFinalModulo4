@@ -1,3 +1,4 @@
+
 export const formatText = (text) => {
     return text
     .trim()
@@ -59,3 +60,11 @@ export const translateAmenities = (amenity, dicionaryAmenities) => {
         .filter( item =>  amenity === item.word)
         .reduce((ac, item) => item.translated, '')
 }
+let debounceTimer;
+export const debounce = (e, search, timer) => { //context, func, delay
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout( () => {
+                search(e.target.value)
+            },  timer)
+
+  };

@@ -1,29 +1,28 @@
+import {  } from "./event-handler.js";
 import { getPropertiesData } from "./api-request.js";
 import {
   setError,
   buildlistProperties,
   buildPathResult,
   buildResetButtonAside,
+  clearInputSearch,
 } from "./html-handler.js";
 import {
   formatText,
   formatArrProperties,
   getCityAndStateName,
-} from "./auxFunction.js";
+} from "./aux-function.js";
 import { dicionaryStateCity } from "./dicionaries-data.js";
 
-const testando = "Rio de Janeiro";
-const testando1 = "Sao Paulo ";
-console.log();
 
-const teste = async (city) => {
+export const search = async (city) => {
   const formatedCity = formatText(city);
   const cityAndStateNameAPI = dicionaryStateCity.filter(
-    (item) => item.city === formatedCity
+    (item) => item.city === formatedCity || item.state === formatedCity
   );
-  //   console.log(cityAndStateName);
   if (cityAndStateNameAPI.length !== 1) {
     setError();
+    clearInputSearch()
     return;
   }
   const propertiesData = await getPropertiesData(cityAndStateNameAPI);
@@ -39,6 +38,5 @@ const teste = async (city) => {
   buildlistProperties(arrformatedObjProperties, amountProperties, cityAndState);
   buildPathResult(cityAndState);
   buildResetButtonAside(cityAndState)
+  clearInputSearch()
 };
-
-teste(testando);
