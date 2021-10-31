@@ -1,30 +1,26 @@
 import { translateAmenities } from "./aux-function.js";
 import { dicionaryAmenities } from "./dicionaries-data.js";
 export const doResultReset = () => {
-  const buttonResetAsideEl = document.querySelector('.reset-city-state');
-  const pathCityStateEl = document.querySelector('.path-city-state');
-  const searchResultEl = document.querySelector('#search-result');
-  buttonResetAsideEl.innerHTML = ''
-  pathCityStateEl.innerHTML = ''
-  searchResultEl.innerHTML = ''
-  console.log(buttonResetAsideEl, pathCityStateEl, searchResultEl)
-  // .innerHTML = "";
+  const buttonResetAsideEl = document.querySelector(".reset-city-state");
+  const pathCityStateEl = document.querySelector(".path-city-state");
+  const searchResultEl = document.querySelector("#search-result");
+  buttonResetAsideEl.innerHTML = "";
+  pathCityStateEl.innerHTML = "";
+  searchResultEl.innerHTML = "";
 };
 export const clearInputSearch = () => {
-  const searchInputEl = document.querySelector('.searchInput')
+  const searchInputEl = document.querySelector(".searchInput");
   searchInputEl.value = "";
-}
+};
 const createElementWithText = (element, text) => {
-  // console.log(element, text)
   const elementEl = document.createElement(element);
-  // console.log(elementEl)
   elementEl.innerText = text;
   return elementEl;
 };
 
 export const setError = () => {
+  doResultReset();
   const searchResultEl = document.querySelector("#search-result");
-  searchResultEl.innerHTML = "";
   const arrWithErrorMsg = [
     "OOOOPS!",
     "ALGO DEU ERRADO NA SUA BUSCA.",
@@ -33,8 +29,8 @@ export const setError = () => {
   ];
   const msg = arrWithErrorMsg.map((msg) => {
     const element = createElementWithText("h2", msg);
-    if (msg.includes("status")) element.classList.add("statusErrorMsg");
-    element.classList.add("errorMsgFormat");
+    if (msg.includes("status")) element.classList.add("status-error-msg");
+    element.classList.add("error-msg-format");
     return element;
   });
   const articleEl = document.createElement("article");
@@ -56,18 +52,17 @@ export const buildlistProperties = (
   cityAndState
 ) => {
   const searchResultEl = document.querySelector("#search-result");
-  searchResultEl.innerHTML = '';
+  searchResultEl.innerHTML = "";
   const titleListProperties = setTitleListProperties(
     amountProperties,
     cityAndState
   );
   const listProperties = setListProperties(arrformatedObjProperties);
-  console.log(listProperties);
+
   searchResultEl.append(titleListProperties);
   listProperties.map((propertyElement) => {
     searchResultEl.append(propertyElement);
   });
-  console.log(arrformatedObjProperties, amountProperties);
 };
 const setTitleListProperties = (amountProperties, { city, state }) => {
   const articleEl = document.createElement("article");
@@ -76,16 +71,16 @@ const setTitleListProperties = (amountProperties, { city, state }) => {
   amountEL.classList.add("fw-bold");
   h1El.append(amountEL, ` imóveis à venda em ${city} - ${state}`);
   h1El.classList.add("title-list-properties");
-  // console.log(h1El)
+
   const resetButton = createResetButton(city, state);
-  resetButton.classList.add("reset-Button-Title-list", "reset-button");
+  resetButton.classList.add("reset-button-Title-list", "reset-button");
   articleEl.append(h1El, resetButton);
   articleEl.classList.add("first-article-list");
   return articleEl;
 };
 const createResetButton = (city, state) => {
   const spanEl = createElementWithText("span", `${city} - ${state}`);
-  spanEl.classList.add('span-reset')
+  spanEl.classList.add("span-reset");
   const divEl = document.createElement("div");
   divEl.append(spanEl);
   return divEl;
@@ -112,6 +107,7 @@ const createImgBox = (imgUrl) => {
   const divEl = document.createElement("div");
   const imgEl = document.createElement("img");
   imgEl.src = imgUrl;
+  imgEl.alt = "Imagem da propriedade";
   divEl.append(imgEl);
   divEl.classList.add("img-box");
   return divEl;
@@ -121,7 +117,7 @@ const setInfoProperty = ({ address, name, area, amenities, pricingInfos }) => {
   const divEl = document.createElement("div");
   const addressEl = createElementWithText("p", address);
   const nameEl = createElementWithText("p", name);
-  const areaEl = createElementWithText("p", area);
+  const areaEl = setArea(area);
   const amenitiesEl = setAmenities(amenities);
   const pricingInfosEl = setPriceInfosEl(pricingInfos);
   const contactButtonsEl = setContactButtons();
@@ -137,14 +133,25 @@ const setInfoProperty = ({ address, name, area, amenities, pricingInfos }) => {
   return divEl;
 };
 
+const setArea = (area) => {
+  const ulEl = document.createElement("ul");
+  area.forEach((item) => {
+    const liEl = document.createElement("li");
+    const qtdEl = createElementWithText("span", item.value);
+    qtdEl.classList.add("fw-bold");
+    const titleEl = createElementWithText("span", item.title);
+    liEl.append(qtdEl, titleEl);
+    ulEl.append(liEl);
+  });
+  return ulEl;
+};
+
 const setAmenities = (amenities) => {
   const divEl = document.createElement("div");
   amenities.forEach((amenity) => {
     const translatedAmenity = translateAmenities(amenity, dicionaryAmenities);
     const divAmenityEl = createElementWithText("div", translatedAmenity);
-    // console.log(divAmenityEl, translatedAmenity)
     divAmenityEl.classList.add("amenities");
-    // divAmenityEl.innerText = amenity
     divEl.append(divAmenityEl);
   });
   divEl.classList.add("amenities-box");

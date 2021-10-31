@@ -34,7 +34,7 @@
             <a href="#" class="d-flex align-items-center">
               <img
                 class="img-fluid"
-                src="./src/assets/img/logo2.png"
+                src="./src/assets/img/logo.png"
                 alt="Logo Viva Real"
               />
             </a>
@@ -71,7 +71,7 @@
         </nav>
         <div id="search-result" class="d-flex flex-column gap-3 pt-4"></div>
       </section>
-      <aside class="searchSidebar d-flex flex-column gap-4">
+      <aside id='search-side-bar' class="d-flex flex-column gap-4">
         <article class="d-flex flex-column p-3">
           <div>
             <label class="form-label" for="search">LOCALIZAÇÃO DO IMÓVEL</label>
@@ -84,50 +84,193 @@
           </div>
           <div>
             <label class="form-label">IMÓVEL COM</label>
-            <div id="optionTourCheckbox" class="form-check form-switch">
+            <div id="option-tour-checkbox" class="form-check form-switch">
               <input
                 class="form-check-input"
                 type="checkbox"
                 role="switch"
-                id="flexSwitchCheckChecked"
-                
+                id="flex-switch-check-checked"
               />
-              <label class="form-check-label" for="flexSwitchCheckChecked"
+              <label class="form-check-label" for="flex-switch-check-checked"
                 >Tour Virtual ou Vídeos</label
               >
             </div>
           </div>
-          <div>
+          <div class="propertyType">
             <label class="form-label">TIPO DE IMÓVEL</label>
-            <select id="propertyType" class="form-select">
-              <option value="Mostrar todos">Mostrar todos</option>
-            </select>
+            <div class="select-dropdown" data-dropdown>
+              <button class="form-select link" data-dropdown-button>
+                Mostrar todos
+              </button>
+              <div class="select-dropdown-menu">
+                <ul>
+                  <li>Residencial</li>
+                  <li>
+                    <input
+                      type="checkbox"
+                      name="Apartamento"
+                      id="Apartamento"
+                    />
+                    <label for="Apartamento">Apartamento</label>
+                  </li>
+                  <li>
+                    <input type="checkbox" name="Casa" id="Casa" />
+                    <label for="Casa">Casa</label>
+                  </li>
+                  <li>
+                    <input
+                      type="checkbox"
+                      name="Casa de Condomínio"
+                      id="Casa de Condomínio"
+                    />
+                    <label for="Casa de Condomínio">Casa de Condomínio</label>
+                  </li>
+                  <li>
+                    <input type="checkbox" name="Chácara" id="Chácara" />
+                    <label for="Chácara">Chácara</label>
+                  </li>
+                  <li>
+                    <input type="checkbox" name="Cobertura" id="Cobertura" />
+                    <label for="Cobertura">Cobertura</label>
+                  </li>
+                  <li>
+                    <input type="checkbox" name="Flat" id="Flat" />
+                    <label for="Flat">Flat</label>
+                  </li>
+                  <li>
+                    <input
+                      type="checkbox"
+                      name="Kitnet/Conjugado"
+                      id="Kitnet/Conjugado"
+                    />
+                    <label for="Kitnet/Conjugado">Kitnet/Conjugado</label>
+                  </li>
+                  <li>
+                    <input
+                      type="checkbox"
+                      name="ResLote/Terreno"
+                      id="ResLote/Terreno"
+                    />
+                    <label for="ResLote/Terreno">ResLote/Terreno</label>
+                  </li>
+                  <li>
+                    <input type="checkbox" name="Sobrado" id="Sobrado" />
+                    <label for="Sobrado">Sobrado</label>
+                  </li>
+                  <li>
+                    <input
+                      type="checkbox"
+                      name="Edifício Residencial"
+                      id="Edifício Residencial"
+                    />
+                    <label for="Edifício Residencial"
+                      >Edifício Residencial</label
+                    >
+                  </li>
+                  <li>
+                    <input
+                      type="checkbox"
+                      name="Fazenda/Sítios/Chácaras"
+                      id="Fazenda/Sítios/Chácaras"
+                    />
+                    <label for="Fazenda/Sítios/Chácaras"
+                      >Fazenda/Sítios/Chácaras</label
+                    >
+                  </li>
+                </ul>
+                <ul>
+                  <li>Comercial</li>
+                  <li>
+                    <input
+                      type="checkbox"
+                      name="Consultório"
+                      id="Consultório"
+                    />
+                    <label for="Consultório">Consultório</label>
+                  </li>
+                  <li>
+                    <input
+                      type="checkbox"
+                      name="Galpão/Depósito/Armazém"
+                      id="Galpão/Depósito/Armazém"
+                    />
+                    <label for="Galpão/Depósito/Armazém"
+                      >Galpão/Depósito/Armazém</label
+                    >
+                  </li>
+                  <li>
+                    <input
+                      type="checkbox"
+                      name="Imóvel Comercial"
+                      id="Imóvel Comercial"
+                    />
+                    <label for="Imóvel Comercial">Imóvel Comercial</label>
+                  </li>
+                  <li>
+                    <input
+                      type="checkbox"
+                      name="Lote/Terreno"
+                      id="Lote/Terreno"
+                    />
+                    <label for="Lote/Terreno">Lote/Terreno</label>
+                  </li>
+                  <li>
+                    <input
+                      type="checkbox"
+                      name="Ponto Comercial/Loja/Box"
+                      id="Ponto Comercial/Loja/Box"
+                    />
+                    <label for="Ponto Comercial/Loja/Box"
+                      >Ponto Comercial/Loja/Box</label
+                    >
+                  </li>
+                  <li>
+                    <input
+                      type="checkbox"
+                      name="Sala/Conjunto"
+                      id="Sala/Conjunto"
+                    />
+                    <label for="Sala/Conjunto">Sala/Conjunto</label>
+                  </li>
+                  <li>
+                    <input
+                      type="checkbox"
+                      name="Prédio/Edifício Inteiro"
+                      id="Prédio/Edifício Inteiro"
+                    />
+                    <label for="Prédio/Edifício Inteiro"
+                      >Prédio/Edifício Inteiro</label
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
-          <div class="flex-row minAndMaxValue">
+          <div class="flex-row min-and-max-value">
             <div>
               <label class="form-label" for="min-price">PREÇO MÍNIMO</label>
-              <input class="form-control" type="text" placeholder="R$ " id="min-price"/>
+              <input class="form-control" type="text" id="min-price" />
             </div>
+
             <div>
-              <label class="form-label" for="max-price">PREÇO MÍNIMO</label>
+              <label class="form-label" for="max-price">PREÇO MÁXIMO</label>
               <input
                 class="form-control"
                 type="text"
-                placeholder="R$ ilimitado"
+                placeholder="ilimitado"
                 id="max-price"
               />
             </div>
           </div>
           <div>
             <label class="form-label" for="">NÚMERO DE QUARTOS</label>
-            <div class="searchRadioOptions d-flex justify-content-between">
+            <div class="search-radio-options d-flex justify-content-between">
               <input
                 type="radio"
                 class="btn-check"
                 name="optionsBedroom"
                 id="option1Bedroom"
                 autocomplete="off"
-                
               />
               <label class="btn btn-primary" for="option1Bedroom">1+</label>
               <input
@@ -166,31 +309,34 @@
           </div>
         </article>
         <article class="d-flex flex-column p-3">
-          <div class="flex-row minAndMaxValue">
+          <div class="flex-row min-and-max-value">
             <div>
               <label class="form-label" for="min-area">ÁREA MÍNIMA</label>
-              <input class="form-control" type="text" placeholder="m² " id="min-area"/>
+              <input
+                class="form-control"
+                type="text"
+                id="min-area"
+              />
             </div>
             <div>
               <label class="form-label" for="max-area">ÁREA MÁXIMA</label>
               <input
                 class="form-control"
                 type="text"
-                placeholder="ilimitado m²"
+                placeholder="ilimitado"
                 id="max-area"
               />
             </div>
           </div>
           <div>
             <label class="form-label" for="">NÚMERO DE VAGAS NA GARAGEM</label>
-            <div class="searchRadioOptions d-flex justify-content-between">
+            <div class="search-radio-options d-flex justify-content-between">
               <input
                 type="radio"
                 class="btn-check"
                 name="optionsParkingSpace"
                 id="option1ParkingSpace"
                 autocomplete="off"
-                
               />
               <label class="btn btn-primary" for="option1ParkingSpace"
                 >1+</label
@@ -241,14 +387,13 @@
             <label class="form-label" class="form-label" for=""
               >NÚMERO DE BANHEIROS</label
             >
-            <div class="searchRadioOptions d-flex justify-content-between">
+            <div class="search-radio-options d-flex justify-content-between">
               <input
                 type="radio"
                 class="btn-check"
                 name="optionsbathroom"
                 id="option1bathroom"
                 autocomplete="off"
-                
               />
               <label class="btn btn-primary" for="option1bathroom">1+</label>
               <input
