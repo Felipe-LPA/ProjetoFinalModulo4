@@ -1,5 +1,6 @@
 import { translateAmenities } from "./aux-function.js";
 import { dicionaryAmenities } from "./dicionaries-data.js";
+// apaga informacoes da pesquisa anterior
 export const doResultReset = () => {
   const buttonResetAsideEl = document.querySelector(".reset-city-state");
   const pathCityStateEl = document.querySelector(".path-city-state");
@@ -8,16 +9,19 @@ export const doResultReset = () => {
   pathCityStateEl.innerHTML = "";
   searchResultEl.innerHTML = "";
 };
+// limpa o imput de pesquisa
 export const clearInputSearch = () => {
   const searchInputEl = document.querySelector(".searchInput");
   searchInputEl.value = "";
 };
+// cria um elemento html com o texto passado como parametro
 const createElementWithText = (element, text) => {
   const elementEl = document.createElement(element);
   elementEl.innerText = text;
   return elementEl;
 };
 
+// renderiza a mensagem de erro
 export const setError = () => {
   doResultReset();
   const searchResultEl = document.querySelector("#search-result");
@@ -38,6 +42,7 @@ export const setError = () => {
   searchResultEl.append(articleEl);
 };
 
+// renderiza botão de reset do aside
 export const buildResetButtonAside = ({ city, state }) => {
   const resetDivButtonAside = document.querySelector(".reset-city-state");
   resetDivButtonAside.innerHTML = "";
@@ -46,6 +51,7 @@ export const buildResetButtonAside = ({ city, state }) => {
   resetDivButtonAside.append(resetButtonEl);
 };
 
+// renderiza a listagem de propriedades
 export const buildlistProperties = (
   arrformatedObjProperties,
   amountProperties,
@@ -64,6 +70,7 @@ export const buildlistProperties = (
     searchResultEl.append(propertyElement);
   });
 };
+// renderiza o titulo da pesquisa
 const setTitleListProperties = (amountProperties, { city, state }) => {
   const articleEl = document.createElement("article");
   const h1El = document.createElement("h1");
@@ -78,6 +85,7 @@ const setTitleListProperties = (amountProperties, { city, state }) => {
   articleEl.classList.add("first-article-list");
   return articleEl;
 };
+// cria botao de reset
 const createResetButton = (city, state) => {
   const spanEl = createElementWithText("span", `${city} - ${state}`);
   spanEl.classList.add("span-reset");
@@ -85,24 +93,21 @@ const createResetButton = (city, state) => {
   divEl.append(spanEl);
   return divEl;
 };
-
+// cria os elementos para listagem das propriedades
 const setListProperties = (arrformatedObjProperties) => {
   return arrformatedObjProperties.map((formatedObjProperty) => {
-    // ancora para cada elemento
     const aEl = document.createElement("a");
     aEl.setAttribute("href", "#");
-    //  article para acoplar cada box de cada propriedade
     const articleEl = document.createElement("article");
     articleEl.classList.add("property-box");
-    // div que recebe a imagem da propriedade
     const imgEl = createImgBox(formatedObjProperty.imgUrl);
-    // div que recebe as parte de informações da propriedade
     const infoEl = setInfoProperty(formatedObjProperty);
     aEl.append(imgEl, infoEl);
     articleEl.append(aEl);
     return articleEl;
   });
 };
+// cria a div para armazenar a imagem
 const createImgBox = (imgUrl) => {
   const divEl = document.createElement("div");
   const imgEl = document.createElement("img");
@@ -112,7 +117,7 @@ const createImgBox = (imgUrl) => {
   divEl.classList.add("img-box");
   return divEl;
 };
-
+// cria a div para renderizar as informaçoes das propriedades
 const setInfoProperty = ({ address, name, area, amenities, pricingInfos }) => {
   const divEl = document.createElement("div");
   const addressEl = createElementWithText("p", address);
@@ -132,7 +137,7 @@ const setInfoProperty = ({ address, name, area, amenities, pricingInfos }) => {
   );
   return divEl;
 };
-
+// cria os elementos que compoe as informaçoes sobre a area/quartos/banheiros/vagas
 const setArea = (area) => {
   const ulEl = document.createElement("ul");
   area.forEach((item) => {
@@ -146,6 +151,7 @@ const setArea = (area) => {
   return ulEl;
 };
 
+// cria os elementos para armazenar as informações dos amenities
 const setAmenities = (amenities) => {
   const divEl = document.createElement("div");
   amenities.forEach((amenity) => {
@@ -157,7 +163,7 @@ const setAmenities = (amenities) => {
   divEl.classList.add("amenities-box");
   return divEl;
 };
-
+// cria os elementos para armazenar as informações monetárias da propriedade
 const setPriceInfosEl = ({ price, monthlyCondoFee }) => {
   const divEl = document.createElement("div");
   divEl.classList.add("price-infos");
@@ -182,6 +188,7 @@ const setPriceInfosEl = ({ price, monthlyCondoFee }) => {
   return divEl;
 };
 
+// cria os botões de contato do hover das parte de informações
 const setContactButtons = () => {
   const teletoneEl = createContactButtons("TELEFONE");
   const msgEl = createContactButtons("ENVIAR MENSSAGEM");
@@ -195,7 +202,7 @@ const createContactButtons = (text) => {
   buttonEl.classList.add("contact-btn");
   return buttonEl;
 };
-
+// cria o link superior com o caminho percorrido.
 export const buildPathResult = ({ city, state }) => {
   const pathCityStateEl = document.querySelector(".path-city-state");
   pathCityStateEl.innerHTML = "";
@@ -207,6 +214,7 @@ export const buildPathResult = ({ city, state }) => {
   ulEl.append(homeEl, propertyTypeEl, stateEl, cityEl);
   pathCityStateEl.append(ulEl);
 };
+// cria o li com a ancora
 const liElements = (text) => {
   const aEl = document.createElement("a");
   aEl.setAttribute("href", "#");
