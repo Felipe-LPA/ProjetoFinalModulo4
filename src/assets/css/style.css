@@ -275,9 +275,9 @@ aside#search-side-bar label:focus,
 aside#search-side-bar input:focus+label{
   box-shadow: none; 
 }
-aside#search-side-bar label:focus,
-aside#search-side-bar input:focus + label,
-aside#search-side-bar input:checked + label{
+aside#search-side-bar label:not(:nth-child(2)):focus,
+aside#search-side-bar input:not(:first-child):focus + label,
+aside#search-side-bar input:not(:first-child)+ label{
   background-color: #1190cd;
   border: none;
   border: 1px solid #1190cd;
